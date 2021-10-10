@@ -112,7 +112,9 @@ import './index.css';
       })
 
       let status
-      if (winner) {
+      if (winner === 'tie') {
+        status = "It's a tie!"
+      } else if (winner) {
         status = 'Winner: ' + winner
       } else {
         status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O')
@@ -156,6 +158,8 @@ import './index.css';
       const [a, b, c] = lines[i];
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
         return squares[a];
+      } else if (squares.every(square => square !== null)) {
+        return 'tie'
       }
     }
     return null;
